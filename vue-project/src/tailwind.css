@@ -6,7 +6,7 @@
 
 @layer base {
     html{
-        background-color: #01c1d4;
+        color: #01c1d4;
         font-family: 'Inter', sans-serif;
     }
 }
