@@ -2,15 +2,24 @@
   <div class="flex flex-col items-center py-5 gap gap-3">
     <img src ="/shield.svg" alt="" class="text-2xl"/>
     <h1 class="uppercase text-5xl">Brewdog</h1>
-    <button class="border border-2 border-blue-300 bg-blue-100 rounded-full py-2 px-4" @click="getBeersList">Check the Menu</button>
+    <button class="border border-2 border-blue-300 bg-blue-100 rounded-full py-2 px-4" :class="{hidden: gotData}" @click="getBeersList">See Menu</button>
 
     <div v-if="loading">
       <p>It's loading...</p>
     </div>
 
-      <div v-if="error">
-        <p class="text-red-500">{{error}}</p>
+    <div v-if="error">
+      <p class="text-red-500">{{error}}</p>
+    </div>
+
+    <div v-if="gotData" class="grid grid-cols-5 gap-3 justify-center items-center p-6">
+      <div v-for="item in beersList">
+        <ul>
+          <li>{{item.name}}</li>
+        </ul>
       </div>
+    </div>
+
   </div>
 </template>
 
@@ -23,6 +32,7 @@ export default {
       loading: false,
       beersList: null,
       error: "",
+      gotData: false,
     }
   },
   methods: {
@@ -46,19 +56,20 @@ export default {
 
     async getBeersList(){
       try {
+        this.loading = true
         const responseList = await fetch('https://api.punkapi.com/v2/beers');
         
         const beersListAPI = await responseList.json();
         
         this.beersList = beersListAPI;
-        console.log(beersListAPI)
       }
       catch(error){
-        this.error = error
-        console.log(error)
+        this.error = error;
+        console.log(error);
       }
       finally{
-        this.loading = false
+        this.loading = false;
+        this.gotData = true;
       }
     }
   }

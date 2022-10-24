@@ -8,5 +8,6 @@
     html{
         color: #01c1d4;
         font-family: 'Inter', sans-serif;
+        height: 100vh;
     }
 }
