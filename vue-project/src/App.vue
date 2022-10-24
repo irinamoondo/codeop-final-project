@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col items-center justify-center py-6 gap gap-3">
+  <div class="flex flex-col items-center justify-center p-6 gap gap-3">
     
     <div class="flex items-center gap gap-3 py-6">
-      <img src ="/shield.svg" alt="" id="logo"/>
-      <h1 class="uppercase text-7xl font-extrabold">Brewdog</h1>
+      <img src="/shield.svg" alt="" id="logo"/>
+      <h1 class="uppercase text-3xl font-extrabold tracking-tight">Brewdog</h1>
     </div>
 
     <div v-if="loading">
@@ -14,11 +14,11 @@
       <p class="text-red-500">{{error}}</p>
     </div>
 
-    <div v-if="gotData" class="grid grid-cols-5 gap gap-6 justify-center px-14">
-      <div v-for="item in beersList" :key="item.id" class="flex flex-col items-center justify-between gap gap-3 bg-neutral-100 px-3 py-5 rounded-xl">
-        <h3 class="text-center text-md font-bold">{{item.name}}</h3>
+    <div v-if="gotData" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap gap-9 justify-center px-14">
+      <div v-for="item in beersList" :key="item.id" class="card flex flex-col items-center justify-around gap gap-3 bg-neutral-100 px-3 py-7 rounded-xl shadow-lg border-1 text-neutral-500 hover:outline-dashed outline-2 outline-offset-2">
+        <h3 class="text-center text-md font-bold tracking-wider pt-3">{{item.name}}</h3>
         <img :src=item.image_url alt={{item.name}}/>
-        <p class="text-center text-xs">{{item.tagline}}</p>
+        <p class="text-center text-xs pb-3">{{item.tagline}}</p>
       </div>
     </div>
 
@@ -31,7 +31,7 @@ export default {
   name: "App",
   data() {
     return {
-      loading: false,
+      loading: null,
       beersList: null,
       error: "",
       gotData: false,

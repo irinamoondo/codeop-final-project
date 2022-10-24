@@ -6,7 +6,7 @@
 
 @layer base {
     html {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
         height: 100vh;
     }
 
@@ -19,11 +19,12 @@
         color: #01c1d4;
     }
 
-    h3 {
-
+    .card {
+        min-width: 200px;
+        max-width: 400px;
     }
 
     #logo {
-        width: 7rem;
+        width: 5rem;
     }
 }
