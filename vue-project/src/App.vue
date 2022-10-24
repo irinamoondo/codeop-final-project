@@ -1,22 +1,24 @@
 <template>
-  <div class="flex flex-col items-center py-5 gap gap-3">
-    <img src ="/shield.svg" alt="" class="text-2xl"/>
-    <h1 class="uppercase text-5xl">Brewdog</h1>
-    <button class="border border-2 border-blue-300 bg-blue-100 rounded-full py-2 px-4" :class="{hidden: gotData}" @click="getBeersList">See Menu</button>
+  <div class="flex flex-col items-center justify-center py-6 gap gap-3">
+    
+    <div class="flex items-center gap gap-3 py-6">
+      <img src ="/shield.svg" alt="" id="logo"/>
+      <h1 class="uppercase text-7xl font-extrabold">Brewdog</h1>
+    </div>
 
     <div v-if="loading">
-      <p>It's loading...</p>
+      <img src="https://thumbs.gfycat.com/ShrillInfamousDodobird-size_restricted.gif"/>
     </div>
 
     <div v-if="error">
       <p class="text-red-500">{{error}}</p>
     </div>
 
-    <div v-if="gotData" class="grid grid-cols-5 gap-3 justify-center items-center p-6">
-      <div v-for="item in beersList">
-        <ul>
-          <li>{{item.name}}</li>
-        </ul>
+    <div v-if="gotData" class="grid grid-cols-5 gap gap-6 justify-center px-14">
+      <div v-for="item in beersList" :key="item.id" class="flex flex-col items-center justify-between gap gap-3 bg-neutral-100 px-3 py-5 rounded-xl">
+        <h3 class="text-center text-md font-bold">{{item.name}}</h3>
+        <img :src=item.image_url alt={{item.name}}/>
+        <p class="text-center text-xs">{{item.tagline}}</p>
       </div>
     </div>
 
@@ -36,24 +38,6 @@ export default {
     }
   },
   methods: {
-    // getBeersList() {
-    //   this.loading = true;
-    //   fetch('https://api.punkapi.com/v2/beers')
-    //   .then(response => {
-    //     if(!response.ok){
-    //       throw new Error ("Response was not found")
-    //     }
-    //     return response.json()
-    //   })
-    //   .then(data => this.beersList = data)
-    //   .catch(error => {
-    //     return this.error = error
-    //   })
-    //   .finally(()=> {
-    //     return this.loading = false
-    //   })
-    // }
-
     async getBeersList(){
       try {
         this.loading = true
@@ -72,6 +56,9 @@ export default {
         this.gotData = true;
       }
     }
+  },
+  mounted() {
+    this.getBeersList()
   }
 }
 

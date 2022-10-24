@@ -5,9 +5,25 @@
 @tailwind utilities;
 
 @layer base {
-    html{
-        color: #01c1d4;
+    html {
         font-family: 'Inter', sans-serif;
         height: 100vh;
+    }
+
+    img {
+        max-width: 10rem;
+        max-height: 10rem;
+    }
+
+    h1 {
+        color: #01c1d4;
+    }
+
+    h3 {
+
+    }
+
+    #logo {
+        width: 7rem;
     }
 }
