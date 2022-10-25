@@ -7,7 +7,7 @@
     </div>
 
     <div v-if="loading">
-      <img src="https://thumbs.gfycat.com/ShrillInfamousDodobird-size_restricted.gif"/>
+      <img src="https://thumbs.gfycat.com/ShrillInfamousDodobird-size_restricted.gif" class="animate-spin"/>
     </div>
 
     <div v-if="error">
@@ -15,20 +15,24 @@
     </div>
 
     <div v-if="gotData" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap gap-9 justify-center px-14">
-      <div v-for="item in beersList" :key="item.id" class="card flex flex-col items-center justify-around gap gap-3 bg-neutral-100 px-3 py-7 rounded-xl shadow-lg border-1 text-neutral-500 hover:outline-dashed outline-2 outline-offset-2">
+      <div v-for="item in beersList" :key="item.id" class="card flex flex-col items-center justify-around gap gap-3 bg-neutral-100 px-3 py-7 rounded-xl shadow-lg border-1 text-neutral-600 hover:bg-white hover:ring ring-pink-200 hover:text-purple-800">
+        <!-- <BeerCard/> -->
         <h3 class="text-center text-md font-bold tracking-wider pt-3">{{item.name}}</h3>
         <img :src=item.image_url alt={{item.name}}/>
         <p class="text-center text-xs pb-3">{{item.tagline}}</p>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+import BeerCard from './components/BeerCard.vue'
 
 export default {
   name: "App",
+  components: {
+    BeerCard
+  },
   data() {
     return {
       loading: null,
