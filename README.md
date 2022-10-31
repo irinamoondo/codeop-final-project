@@ -26,6 +26,7 @@ npm run dev
 ```
 para ejecutar el script de desarrollo definido en el archivo package.json del proyecto.
 Para saber qué ejecuta exactamente el comando, primero debes abrir el archivo package.json.
+
 ## API Reference
 La API de Punk toma el DIY Dog de Brewdog y lo convierte en una API que se puede buscar y filtrar que es completamente gratuita y de código abierto.
 Link a la PUNK API https://punkapi.com/documentation/v2
@@ -39,6 +40,10 @@ El endpoint debe prefijar todos los recursos y solo se puede acceder a través d
 ### Parámetros
 Todos los parámetros son opcionales y sin ellos la API solo devolverá las cervezas en orden ascendente desde su ID. Los parámetros se pasan como una cadena de consulta y se pueden encadenar.
 Para consultar los parámetros, dirígete a la página web: https://punkapi.com/documentation/v2
+
+## Deployment
+La aplicación está desplegada con Vercel. Link: https://codeop-final-project.vercel.app/
+
 ## Credits
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
@@ -46,4 +51,3 @@ _This is a student project that was created at [CodeOp](http://codeop.tech), a f
 ## Authors
 
 - [@irinamoondo](https://github.com/irinamoondo/)
-
